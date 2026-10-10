@@ -1,0 +1,38 @@
+# Local datasets and archives
+data/raw/
+data/interim/
+data/processed/
+*.zip
+*.7z
+*.tar
+*.tar.gz
+
+# Python environments and caches
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Secrets and local configuration
+.env
+.env.*
+!.env.example
+
+# Generated artifacts and large model files
+artifacts/
+checkpoints/
+models/
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+*.onnx
+
+# OS/editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
