@@ -109,7 +109,7 @@ Across all 6 CSV files, there is **no categorical fault type column**. The only 
 Because telemetry is logged every 60 seconds across continuous 24-hour periods:
 1. Contiguous rows exhibit near-1.0 autocorrelation.
 2. A random row shuffle (`train_test_split`) leaks the daily weather, occupancy, and thermal drift directly from train into test.
-3. Models evaluated on randomly shuffled splits will achieve deceptively perfect test scores (>99% accuracy) that catastrophically fail in real-world generalization.
+3. Random row-level evaluation risks optimistic results because correlated time points and shared operating conditions may appear in both train and test. No such accuracy was measured in this audit.
 
 ---
 
