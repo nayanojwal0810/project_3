@@ -40,8 +40,8 @@
 
 ### 2.2 Data Leakage and Validation Split Strategy
 - **Failure Mode of Random Shuffling:**
-  - Standard random row splitting (`train_test_split`) on 1-minute time series data guarantees severe data leakage. Contiguous minutes share thermal mass, outdoor air temperature, and fan speeds.
-  - A randomly sampled test row will almost always be flanked by training rows from the same hour, causing naive classifiers to achieve near-100% accuracy while failing completely in production.
+  - Standard random row splitting on 1-minute time-series data risks leakage because adjacent observations share thermal mass, outdoor air temperature, and fan speeds.
+  - A randomly sampled test row may be close to training rows from the same hour, which can inflate apparent performance. No model was trained in this audit, so no accuracy figure or production failure has been established.
 - **Recommended Split Strategy:**
   - **Grouped by Calendar Day / Experiment Scenario:** Use `GroupKFold` or block time-series splits grouped on `date`.
   - **Condition Invariance:** Ensure both training and test sets contain diverse outdoor air temperatures and both occupied/unoccupied modes so the model does not treat "nighttime setback" as a "fault".
